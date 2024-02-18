@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul class="language">
+      <li class="code_lang">Javascript</li>
+    </ul>
+
+    <script>
+      function addLanguage(lang) {
+        const li = document.createElement("li");
+        li.innerHTML = `${lang}`;
+        li.className = "code_lang";
+        document.querySelector(".language").appendChild(li); // do not use innerHTML that will impact the performance because it will traverse the dom tree then update the value
+      }
+
+      addLanguage("Python");
+
+      function addOptiLangauge(lang) {
+        const li = document.createElement("li");
+        li.className = "code_lang";
+        li.appendChild(document.createTextNode(lang)); // this will directly append text node to li
+        document.querySelector(".language").appendChild(li); // this function is little more optimized
+      }
+
+      //add element
+      addOptiLangauge("C++");
+      addOptiLangauge("C");
+      addOptiLangauge("Ruby");
+
+      //Edit
+      const secondElement = document.querySelector(".language li:nth-child(2)"); // you can use css selectors in querySelector method
+      console.log(secondElement);
+      const newLi = document.createElement("li");
+      newLi.className = "code_lang";
+      newLi.appendChild(document.createTextNode("Java"));
+      secondElement.replaceWith(newLi);
+
+      //edit
+      const firstChild = document.querySelector("li:first-child");
+      //   console.log(firstChild);
+      firstChild.outerHTML = "<li class='code_lang'>Mojo</li>";
+
+      //remove
+      const lastElement = document.querySelector("li:last-child");
+      lastElement.remove();
+    </script>
+  </body>
+</html>
