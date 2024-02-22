@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Set timeout funtion</title>
+  </head>
+  <body>
+    <h1>Chai aur code</h1>
+    <button id="start">start</button>
+    <button id="stop">stop</button>
+  </body>
+  <script>
+    let intervalId;
+
+    function sayRitesh() {
+      console.log("Ritesh");
+    }
+
+    document.getElementById("start").addEventListener("click", () => {
+      if (!intervalId) {
+        intervalId = setInterval(sayRitesh, 1000);
+      }
+
+      console.log(intervalId);
+    });
+
+    document.getElementById("stop").addEventListener("click", () => {
+      clearInterval(intervalId);
+      intervalId = null; // this will release the space and is more optimized code
+    });
+  </script>
+</html>
